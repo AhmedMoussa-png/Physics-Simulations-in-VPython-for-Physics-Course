@@ -1,18 +1,17 @@
 from vpython import *
 #Web VPython 3.2
 sf = 0.002
-oofpez = 9e9 # Electric constant.
-e0 = 1.0/(4*pi*oofpez) # Other electric constant.
-Qtot = 1e-9 # Total charge.
-R = 1.0 # Radius of disk.
-N = 5000 # Number of point charges the disk will be made of.
+oofpez = 9e9 
+e0 = 1.0/(4*pi*oofpez) 
+Qtot = 1e-9 
+R = 1.0
+N = 5000 
 
-A = pi*R**2 # Area of the disk.
-da = A/N # Area occupied by a single point charge.
-dx = sqrt(da) # Distance between neighboring point charges.
-constant = Qtot/(A*2*e0) # Thing in front of exact E result.
+A = pi*R**2 
+da = A/N 
+dx = sqrt(da) 
+constant = Qtot/(A*2*e0) 
 
-# Create a list of point charges.
 sources = [] 
 
 
@@ -67,13 +66,12 @@ E_graph = gcurve(color=color.black,label="calculation")
 theoretical_graph = gcurve(color=color.red,label="theory")
 
 for r_obs in observations:
-    # Calculate E from each point charge.
     E_net = vector(0,0,0)
     for s in sources:
-        r = r_obs - s.pos # Relative position vector.
-        rhat = r/mag(r) # Unit vector.
-        E = (oofpez * s.q / mag(r)**2) * rhat # Calculate E for this slice.
-        E_net = E_net + E # Add this E to the total E.
+        r = r_obs - s.pos 
+        rhat = r/mag(r)
+        E = (oofpez * s.q / mag(r)**2) * rhat 
+        E_net = E_net + E 
         
     E_graph.plot(pos=(r_obs.z,mag(E_net)))
     theoretical_graph.plot(pos=(r_obs.z, constant * (1-r_obs.z/(R**2+r_obs.z**2)**0.5)))

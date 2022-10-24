@@ -1,0 +1,2 @@
+# Physics-Simulations-in-VPython-for-Physics-Course
+The project consists of 8 simulations for 8 different physical systems. Electric field lines for different charge distributions (Charged Rod, Charged Sheet,..etc) are investigated. A simulation for space contraction as a result of moving at very high speeds is also conducted. Included also is a simulation for a solar system consisting of two planets of crossing orbits and a star.
